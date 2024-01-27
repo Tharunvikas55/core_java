@@ -1,0 +1,487 @@
+structure of a java program:
+1)Documentation section ->The basic information about the java program .It is defined either in single line(//) or multiple lines(/**  */). for industry purpose eg.date of file created. 
+2)Package statement-> It is the way to organize related classes and interfaces.It also helps in avoiding nameing conflits.package is the keyword define package statements.
+3)Import statement -> it is used to bring classesses or packages into the current program,making them accessable without full qualifing names .similar to c #include statement.2types of import statement -> implicit(import java.io.BufferedReader;) , explicit(import java.util.*;)
+4)Interface statement -> a single java file should contain 1 class or 1 interface is good to practice
+5)Class Definition -> the main buliding block in java is class. A java file can have multiple classes or interfaces.But atmost one of them can be public and the file name should match the name of the public class.
+6)main method class
+	{
+	main method definition
+	}
+6)Variables and methods -> with in a class variable represent the state and methods define its behaviour.
+------------------------------------------------------
+To save a .java file 
+1)it is good to save the filename as the name as the classname
+
+------------------------------------------------------
+
+To run java file
+1)open cmd and cd .java file path
+2)to compile -> javac filename.java
+		after compilation it create classname.class file which contains byte code
+3)to run -> java classname
+
+------------------------------------------------------
+Execution flow to a java program
+1)compilation->java code return in .java file is compiled using javac compiler which produces bytecode in .class file 
+2)class loading-> JVM loads the bytecode class file int memory(jVM)
+3)Initialization-> the static variables and static blocks of the class are executed in the order they appear in the code and it happens only once when the class is loaded.
+4)Main method execution-> it is teh entry point of java applications.
+5)Method invokation-> the main method and other methods are executed in the order in which they are called.
+6)Object instantiation-> objects are instantiated using the new keyword.Constructors are called during object creation.
+7) instance method are executed when object is called.
+8)Flow control-> flow control statements determine the order in which statements are executed.
+9)Exception Handeling
+10)Garbage collection-> JVM automatically reclaims memory by removing objects that are no longer reachable.
+
+-------------------------------------------------------
+Variables :
+types:
+1)Local variables -> defined within a method , constructor or block. Must be initialized before used.
+2)Instance or class Variables -> Belong to an instance of a class. Each instance has its own copy of variable.Intialized with default values if not explicitly set.
+3)Static variables -> Belongs to the class rather than instances .Shared among all the instances of the class.Intialized with default values if not explicitly set.
+
+------------------------------------------------------------------------ 
+Datatypes:
+1)primitive->fixed memory size
+	1)integer
+		1)byte-> 8 bits(-128 to 127)
+		2)short-> 16 bits(-32768 to 32767)
+		3)int-> 32 bits(-2^32 to (2^32)-1)
+		4)long-> 64 bits(-2^64 to (2^64)-1)
+	2)Float-point numbers
+		1)double-> 64 bits(15 decimal digits)
+		2)float-> 32 bits(627 decimal digits)
+	3)Characters
+		1)char-> 16 bits(0 to 65535s)
+	4)Booolean
+		1)boolean-> 1 bit(1 for True or 1 for False)
+2)Non-Primitive or user defined datatype
+	1)String
+	2)Array
+	3)Classes
+	4)etc
+
+--------------------------------------------------------------------------
+
+wrapper class:
+->in java.Lang package
+->Integer(eg.Integer a=10;)
+->Float (eg.Float b=45.6f;)
+->String
+
+---------------------------------------------------------------------------
+Jump statements:
+break->used to terminate a block
+continue
+return
+
+---------------------------------------------------------------------------
+Methods in java:
+ways to define methods -> 4 types
+	1)method with no return type and no parameter
+	2)method with no return type and with parameters
+	3)with return type and without parameters
+	4)with return type and with parameters
+types of methods:
+	1)standard library methods
+	2)User defined methods
+		1)Static methods
+		2)Instance methods
+
+access modifiers return type method name(parameters)
+
+
+-----------------------------------------------------------------------------
+Strings:
+Class-> String->part of java.lang package,immutable in java, 
+     -> StringBuffer
+     -> StringBuilder->it is sutable for string manipulation in a single a single threaded environment.
+
+strings--(doesnot have a fixed size,it is a part of constpool memory which is 64MB),and memory is as hexadecimal values
+
+Predefined methods in string:
+1)length()-> return the length of the string
+2)concat()->will append a string
+3)contains()->used to find substring in a given string.it will return true if the substring is present in the string,otherwise false.
+4)charAt()->returns the character for the given index.
+5)toLowercase()
+6)toUppercase()
+7)substring(start,end)
+8)trim()->removing spaces at begining and end of the string
+9)replace()
+
+sting comparision:
+1)==(it checks value and memory heap address) and !=
+2)equals()->it check the value and it is case sensitive
+3)equalsIgnoreCase() -> not case sensitive
+
+---------------------------------------------------------------------------------
+StringBuffer:
+->it is mutable,also part of java.lang package
+->it is thread safe,it is sutable for multithread environment .because, it implement synchronization.
+
+---------------------------------------------------------------------------------
+difference between  String,StringBuffer,StringBuilder in java note
+
+----------------------------------------------------------------------------------
+
+Arrays
+	->fixed size
+	->it require a block of memory
+in java an array is a datastructure that allows to store multiple values of the same type under a single name.each element in an array is accessed by the index,which starts from 0.
+Declaration and Initialization of array:
+	1)int[] numbers=new int[5];
+	
+	2)int[] numbers;
+	numbers=new int[5];
+	
+	1)int[] numbers={10,20,30,40,50};
+	
+	2)numbers[0]=10;
+	numbers[1]=20;
+	numbers[2]=30;
+	numbers[3]=40;
+	numbers[4]=50;
+	
+	
+methods:
+---------------------------------------------------------------------------------------
+custom packages:
+
+package com.ibm.hdfc.loan.homeloan; 
+
+package->keyword
+com-> company specification
+ibm-> company name
+hdfc->client
+loan->project name
+homeloan->package name
+
+eg.,in sms project we had
+	edu.kec.sms
+	edu.kec.sms.Model
+
+---------------------------------------------------------------------------------------
+Interface->collection of abstract methods 
+in java multiple inheritance is implemented using interface
+
+---------------------------------------------------------------------------------------
+Access modifiers:
+it is 
+<-----------------------refer access.jpeg in the folder------------>
+types of access modifiers:
+	1)public 
+	2)private
+	3)protected
+	4)default
+	
+->if the class is in dikkerent package and if the class variable and method is protected it will not be accessible
+----------------------------------------------------------------------------------------
+Run time stack machanism:
+	->For every thread JVM create a runtime stack.
+	->All the method calls performed by the thread will be stored in the corresponding stack.
+	->Each entry in the stack is called activation record or stack frame.
+	->After completing every method call JVM removes the corresponding entry from the stack.
+	->After completing all the method calls just before terminating the thread JVM destroys the corresponding stack.
+	
+-----------------------------------------------------------------------------------------
+Exception:
+The normal flow of program
+eg.ArithemeticException,ArrayIndexOutOfBoundsException
+default exception in java
+In program if any exception is raised , the method in which it is raised is responsible to create exception object by including the following information:
+		1)Name of the exception
+		2)Description
+		3)Location
+	->After creating exception object the method handovers that object to the jVM.
+	->It will check whether the corresponding method having any exception handling code or not.If the method have the any exception handling code then the exception handling part of the code will be executed.
+	->Otherwise JVM terminates the method abnormally and removes it from the stack.
+	->JVM identifies caller method and will check whether the method contains handling code.If the caller method does not contain exception handling then JVM terminates caller method and removes corresponding entry from the stack .
+	->This process will continue until main method is reached . If the main method doesn't implement exception handling then JVM termintes the main method and removes entry from the corresponding stack.
+	->Then JVM handovers exception object to the default exception handler,which is a part of JVM.
+	->Default exception handler prints the exception message to the console and terminates the program abnormally.
+	
+--------------------------------------------
+Exception Handling:
+Throwable -> Throwable class access root for exception hierarchy.
+			 Throwable contains two child classes:
+				1)Exception
+				2)Error
+eg.,
+	try{
+		statements
+	}
+	catch{ (Exception class object)
+		statements
+	}
+	finally
+	{
+		//close file handles
+	}
+	
+-----------------------------------------------
+Constructors:
+=>it is also a special method that is used to initialise object.It has the same name as the class and is executed when an object is created.
+=>it can be overloaded
+=>constructors dont have a return type.
+=>it can have access modifiers.
+If a constructor explicitly invoke a  super class constructor will insert a call to the default constructor of the super class.
+
+this method -> you can use this() method to invoke another constructor with in the same class and super() method to invoke a constructor in the super class and this process is called constructor chaining.
+
+---------------------------------------------------------------------------------
+Object oriented programming:
+	Object ->instance of a class .Each object will have its own memory address of that class.
+	class -> blue print.Def: A class is a template that defines structure and behaviour of objects.
+	Encapsulation -> wrapping up of data and method (setter and getter)( behaviour ).eg., we created student private variables in student management system project.Encapsulation is bundling of data(properties ) and methods(functionality or behaviour) that operate on the data into a single unit known as class.
+		it is to hide the internal implementation details and expose only the necessary for the outside world.it helps in acheiving better organization of code and enhancing security of the code.
+		In java encapsulation is implemented through the use of access modifiers.
+	Inheritance
+	Polymorphism
+	Abstraction
+	
+------	
+example for encapsulation:
+	package edu.kec.sms.model;
+
+	public class Student {
+	private Integer id;
+	private String name;
+	private String email;
+	private Long mobile;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Long getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(Long mobile) {
+		this.mobile = mobile;
+	}
+
+}
+
+-----------------------------------------------------------
+Inheritance:
+	
+in java single inheritance refers to the ebility of a class to inherit from only one super class.
+
+
+	->Inheritance in java is a fundamental OOPS concept where a new class (child or subclass) is created by deriving properties and behaviour from an existing class (parent or super class).
+	The child class inherits fields and methods from the parent and can add its own unique characteristics to maintain the relationship
+Usecases of inheritance:
+	1) code reusability.
+	2) organising the code.
+	3)method overriding ( polymorphism ).
+	4)extends is a keyword used to implement inheritance between two classes. implements is the keyword to implement inheritance with an interface.
+
+types of Inheritance:
+	1)Single -> a subclass which extends only one super class .
+	eg.,
+		public class Parent
+		{
+		
+		}
+		public class Child extends Parent
+		{
+		
+		}
+	2)Multi-level-> a class of inheritance where a subclass become a super class for another class .
+	eg.,
+		public class Parent
+		{
+		
+		}
+		public class Child extends Parent
+		{
+		
+		}
+		public class SubChild extends Child
+		{
+		
+		}
+	3)Multiple -> inheriting properties and behavior from two different parents . In java classes doesn't support multiple inheritance . however interface provides support for multiple inheritance.
+	eg.,
+		public interface ParentA
+		{
+		
+		}
+		public interface ParentB 
+		{
+		
+		}
+		public class child implements ParentA , ParentB
+		{
+		
+		}
+	4)Hierarchical -> Multiple child classes or subclasses inheriting properties and behaviour from a single parent or super class . 
+	eg.,
+		public class Parent
+		{
+		
+		}
+		public class ChildA extends Parent
+		{
+		
+		}
+		public class ChildB extends Parent
+		{
+		
+		}
+		public class ChildC extends Parent
+		{
+		
+		}
+	5)Hybrid
+	
+	--------------------------------------------------------------
+Polymorphism:
+ polymorphism in java refers to the ability of  different object communicate as objects of a common super class . It enables a single interface ( class or method ) to be used for entities of different types , providing flexibility , and code reusability.
+	types of polymorphism :
+		1)static or compile time polymorphism -> it is implemented by method overloading. it occurs when there are multiple methods of a class with the same name but difference in either number of parameters or type of parameters . The compiler determines which method to call based on the signature
+			1)Operator Overloading
+			2)Method Overloading
+		2)Runtime -> it happens when a subclass provides specific implementation of a method that is already defined in its super class.
+			Method Overriding
+			
+			
+		example of compile time polymorphism:
+		public class Operations{
+			public void add()
+			{
+				System.out.println("add()");
+			}
+			public void add(int a)
+			{
+				System.out.println("add(int a)");
+			}
+			public void add(int a,int b)
+			{
+				System.out.println("add(int a,int b)");
+			}
+		}
+		
+		example for runtime polymorphism:
+		public interface Operations implements IOperations
+		{
+		public void add();
+		public void sub();
+		}
+		
+		public class Operations implements IOperations
+		{
+			@Override
+			public void add()
+			{
+				System.out.println("add()");
+			}
+			
+						@Override
+			public void sub()
+			{
+				System.out.println("sub()");
+			}
+
+		}
+
+----------------------------------------------------------------------
+Abstraction:
+	It is a fundamental concept of java programming thar allows to hide implementation details and only show accessable information to the classes. Abstraction can be acheived using either interface or abstract class.
+Abstraction using interface:
+  eg.,
+  public interface IOrderService 
+  {
+  public void add();
+  }
+  
+  
+  public class OrderService implements IOrderService
+  {
+	public void add()
+	{
+		System.out.println("Order inserted into queue..."); 
+		addInDB(); // calling abstracted method
+	}
+	
+	//abstracted method
+	public void addInDB()
+	{
+		System.out.println("Added order into db...");
+	}
+  }
+  
+  
+Abstraction using abstract class:
+	In java an abstract class is a class that cannot be instantiated on its own and may contain either abstract or concrete methods.
+	Abstract classes are often used as base classes from which other classes can inherit common functionality.
+	
+	eg.,
+	public abstract class OrderAbstraction
+	{
+		//abstract method
+		public abstract void add()
+
+		//conrete method
+		public void sendMail()
+		{
+			System.out.println("mail sent to customer...");
+		}
+	}
+
+characteristics of abstract class:
+	An abstract class cannot be instantiated directly using the new keyword.
+	it can have abstract methods which are declared with abstract keyword and are implemented by concrete sub classes.
+	it can have concrete methods and subclasses can choose to override or use the abstract class method.
+	Abstract class can have constructors and these are invoked when a concrete subclass is instantiated.
+	it can have attributes or fields or class variables.
+	Abstract methods must be implemented.
+	Abstract classes can extend another class.
+	
+------------------------------------------------------------------------------------------
+//write a java program to implement an Atm operations
+1)pin change
+2)withdraw
+3)balance
+4)exit
+
+
+-----------------------------------------------------------------------------
+Difference between 
+feature 			 | 			Interface								  Abstract class
+                     |
+Keyword				 |   		interface                   		         abstract
+                     |
+Definition           |    declares a contract for a       			 provides a common base for 
+                          class to implement.           				 all the derived class
+
+Multiple inheritance      		supports                  			       doesn't support
+
+constructor             cannot have constructor       			          have constructor
+
+fields                  can only have public,static,final   		can have any type of fields
+
+Access modifier         only public                          		can have any access modifier
